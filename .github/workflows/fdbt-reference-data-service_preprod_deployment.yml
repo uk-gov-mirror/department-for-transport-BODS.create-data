@@ -35,12 +35,12 @@ jobs:
       run: |
         pip install safety==3.7.0
         cd src/retrievers
-        safety check -r requirements.txt --policy-file ${{ github.workspace }}/.safety-policy.yml
+        safety check -r requirements.txt
 
     - name: Use Node.js 
       uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # 6.4.0
       with:
-        node-version: 18.x
+        node-version: 24.x
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@e7f100cf4c008499ea8adda475de1042d6975c7b # 6.2.0
@@ -53,8 +53,8 @@ jobs:
       run: |
         pip install safety==3.7.0
         cd src/uploaders
-        safety check -r requirements.txt --policy-file ${{ github.workspace }}/.safety-policy.yml
-        safety check -r requirements.test.txt --policy-file ${{ github.workspace }}/.safety-policy.yml
+        safety check -r requirements.txt
+        safety check -r requirements.test.txt
     
     - name: test-reference-data-uploaders
       run: |
